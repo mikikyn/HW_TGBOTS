@@ -1,13 +1,12 @@
 from aiogram import executor
 from config import bot, dp
-from handlers import (start,
-                      echo,
-                      commands)
+from handlers import start, commands, echo, quiz
 
 
-start.register_start(dp=dp)
-commands.register_commands(dp=dp)
-echo.register_echo(dp=dp)
+start.register_start(dp)
+commands.register_commands(dp)
+quiz.register_quiz(dp)
+echo.register_echo(dp)
 
 
 
