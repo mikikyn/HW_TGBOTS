@@ -16,11 +16,11 @@ async def fsm_start(message:types.Message):
     await message.answer('Название продукта?')
     await FSM_Store.name.set()
 
-async def load_name(message:types.Message, state:FSMContext):
+async def load_name(message:types.Message,state:FSMContext):
     async with state.proxy() as data:
-        data['name'] = message.text
-        await message.answer('Размер продукта?', reply_markup=sizes)
-        await FSM_Store.size.set()
+        data['name']=message.text
+    await message.answer('Размер продукта?', reply_markup=sizes)
+    await FSM_Store.next()
 
 async def load_size(message:types.Message, state:FSMContext):
     if message.text in size:
@@ -52,7 +52,7 @@ async def load_photo(message:types.Message, state:FSMContext):
     async with state.proxy() as data:
         data['photo'] = photo
     await message.answer_photo(photo=photo,
-                               caption='name: {data["name"]}\n'
+                               caption=f'name: {data["name"]}\n'
                                f'size: {data["size"]}\n'
                                f'category: {data["category"]}\n'
                                f'price: {data["price"]}\n')
