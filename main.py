@@ -16,10 +16,10 @@ commands.register_commands(dp)
 quiz.register_quiz(dp)
 fsm_store_hw.register_store(dp)
 fsm_store.register_store(dp)
-start_test.register_start_test(dp)
+
 echo.register_echo(dp)
 
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
-    executor.start_polling(dp, skip_updates=True,)
+    executor.start_polling(dp, skip_updates=True, on_startup=on_startup)

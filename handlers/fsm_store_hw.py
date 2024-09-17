@@ -62,7 +62,7 @@ async def load_product_id(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data['product_id'] = message.text
 
-    await message.answer('Напишите информацию о продукте: ')
+    await message.answer('Информация о товаре: ')
     await FSM_Store.next()
 
 async def load_info_product(message: types.Message, state: FSMContext):
@@ -101,10 +101,10 @@ async def submit(message: types.Message, state: FSMContext):
                 product_id=data['product_id'],
                 photo=data['photo']
             )
-            await db_main.insert_products_detail(
+            await db_main.insert_products_details(
                 productid=data['product_id'],
                 category=data['category'],
-                info_product=data['info_product'],
+                info_product=data['info_product']
             )
             await state.finish()
 

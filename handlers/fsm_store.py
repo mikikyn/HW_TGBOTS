@@ -88,7 +88,7 @@ async def submit(message: types.Message, state: FSMContext):
     if message.text == 'Да':
         async with state.proxy() as data:
             await message.answer('Отлично, Данные в базе!', reply_markup=kb)
-            await db_main.sql_insert_products(
+            await db_main.sql_insert_products_details(
                 name_product=data['name_products'],
                 size=data['size'],
                 price=data['price'],
