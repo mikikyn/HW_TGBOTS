@@ -16,7 +16,7 @@ commands.register_commands(dp)
 quiz.register_quiz(dp)
 fsm_store_hw.register_store(dp)
 fsm_store.register_store(dp)
-
+start_test.register_start_test(dp)
 echo.register_echo(dp)
 
 
