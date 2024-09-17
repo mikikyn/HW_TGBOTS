@@ -16,6 +16,7 @@ class FSM_Store(StatesGroup):
     category = State()
     price = State()
     product_id = State()
+    info_product=State()
     photo_products = State()
     submit = State()
 
@@ -61,9 +62,14 @@ async def load_product_id(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data['product_id'] = message.text
 
-    await message.answer('Отправьте фото: ')
+    await message.answer('Напишите информацию о продукте: ')
     await FSM_Store.next()
 
+async def load_info_product(message: types.Message, state: FSMContext):
+    async with state.proxy() as data:
+        data['info_product'] = message.text
+    await message.answer('Фото продукта')
+    await FSM_Store.next()
 
 async def load_photo(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
@@ -95,6 +101,11 @@ async def submit(message: types.Message, state: FSMContext):
                 product_id=data['product_id'],
                 photo=data['photo']
             )
+            await db_main.insert_products_detail(
+                productid=data['product_id'],
+                category=data['category'],
+                info_product=data['info_product'],
+            )
             await state.finish()
 
     elif message.text == 'Нет':
@@ -124,5 +135,6 @@ def register_store(dp: Dispatcher):
     dp.register_message_handler(load_category, state=FSM_Store.category)
     dp.register_message_handler(load_price, state=FSM_Store.price)
     dp.register_message_handler(load_product_id, state=FSM_Store.product_id)
+    dp.register_message_handler(load_info_product, state=FSM_Store.info_product)
     dp.register_message_handler(load_photo, state=FSM_Store.photo_products, content_types=['photo'])
     dp.register_message_handler(submit, state=FSM_Store.submit)

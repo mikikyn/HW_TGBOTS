@@ -1,4 +1,4 @@
-from config import bot, dp
+from config import bot
 from aiogram import types, Dispatcher
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
