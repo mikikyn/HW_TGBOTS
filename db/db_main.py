@@ -13,6 +13,10 @@ async def sql_create():
     cursor.execute(queries.CREATE_TABLE_PRODUCTS_DETAILS)
     db.commit()
 
+async def insert_collection_product():
+    await sqlite3.connect('db/store.sqlite3')
+    cursor = db.cursor()
+
 
 async def sql_insert_products_details(name_product, size, price, product_id, photo):
     with sqlite3.connect('db/store.sqlite3') as db_with:
