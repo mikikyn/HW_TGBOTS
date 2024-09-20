@@ -35,3 +35,4 @@ async def insert_products(product_id, category, info_product):
         cursor_with = db_with.cursor()
         cursor_with.execute(queries.INSERT_PRODUCTS_DETAILS, (product_id, category, info_product))
     db.commit()
+
