@@ -1,13 +1,15 @@
 from aiogram import types, Dispatcher
 import os
-from buttons import start
+from buttons import urls
 from config import bot
 
 
 
 async def start_handler(message: types.Message):
-    await bot.send_message(chat_id=message.from_user.id, text='Hello!',
-                           reply_markup=start)
+    await bot.send_message(chat_id=message.from_user.id,
+                           text=f'Hello! {message.from_user.first_name}',
+                           reply_markup=urls)
+
     # await message.answer(text='Привет')
 
 

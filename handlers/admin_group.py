@@ -52,6 +52,6 @@ def register_admin_group(dp: Dispatcher):
     dp.register_message_handler(welcome_user,
                                 content_types=[types.ContentType.NEW_CHAT_MEMBERS])
 
-    dp.register_message_handler(user_warnings, commands=['warn'])
+
 
     dp.register_message_handler(filter_word)
