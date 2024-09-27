@@ -1,17 +1,13 @@
 from aiogram import types, Dispatcher
 import os
-from buttons import urls
+from buttons import start
 from config import bot
 
 
-
 async def start_handler(message: types.Message):
-    await bot.send_message(chat_id=message.from_user.id,
-                           text=f'Hello! {message.from_user.first_name}',
-                           reply_markup=urls)
-
+    await bot.send_message(chat_id=message.from_user.id, text='Hello!',
+                           reply_markup=start)
     # await message.answer(text='Привет')
-
 
 
 async def mem_handler(message: types.Message):
@@ -21,7 +17,6 @@ async def mem_handler(message: types.Message):
 
     with open(photo_path, 'rb') as photo:
         await message.answer_photo(photo=photo)
-
 
 
 async def mem_all_handler(message: types.Message):

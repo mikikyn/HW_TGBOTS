@@ -17,8 +17,11 @@ async def reply_webapp(message: types.Message):
 
     netflix = KeyboardButton('Netflix', web_app=types.WebAppInfo(url='https://www.netflix.com/kg/'))
 
+    kinokrad = KeyboardButton('Kinokrad', web_app=types.WebAppInfo(url='https://kinokrad.ac/'))
 
-    keyboard.add(geeks_online, youtube, spotify, jutsu, netflix)
+    os_kg = KeyboardButton('OK KG', web_app=types.WebAppInfo(url='https://oc.kg/'))
+
+    keyboard.add(geeks_online, youtube, spotify, jutsu, netflix, kinokrad, os_kg)
 
     await message.answer(text='WebApp кнопки: ', reply_markup=keyboard)
 
@@ -29,14 +32,11 @@ async def inline_webapp(message: types.Message):
     gitignore_io = InlineKeyboardButton('gitignore.io', web_app=types.WebAppInfo(
         url='https://www.toptal.com/developers/gitignore/'))
 
-    translate = InlineKeyboardButton('Переводчик', web_app=types.WebAppInfo(
-        url='https://translate.google.com/?sl=en&tl=ru&op=translate'))
+    translate = InlineKeyboardButton('Переводчик', web_app=types.WebAppInfo(url='https://translate.google.com/?sl=en&tl=ru&op=translate'))
 
-    chat_gpt = InlineKeyboardButton('chat.gpt', web_app=types.WebAppInfo(
-        url='https://chatgpt.com/'))
+    chat_gpt = InlineKeyboardButton('chat.gpt', web_app=types.WebAppInfo(url='https://chatgpt.com/'))
 
-    kaktus_media = InlineKeyboardButton('kaktus.media', web_app=types.WebAppInfo(
-        url='https://kaktus.media/'))
+    kaktus_media = InlineKeyboardButton('kaktus.media', web_app=types.WebAppInfo(url='https://kaktus.media/'))
 
     keyboard.add(gitignore_io, translate, chat_gpt, kaktus_media)
 
